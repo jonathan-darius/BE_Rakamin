@@ -1,0 +1,146 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "A user management service API in Go using Gin framework.",
+        "title": "Gin User Service",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/AddPerson": {
+            "post": {
+                "description": "post Person",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserManagement"
+                ],
+                "summary": "Add Person",
+                "parameters": [
+                    {
+                        "description": "Register Person",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SwagPerson"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/DeleteUser/{user_id}": {
+            "delete": {
+                "description": "Delete a User",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserManagement"
+                ],
+                "summary": "Delete a User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Delete user by id",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/GetUser/{user_id}": {
+            "get": {
+                "description": "Get a User",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserManagement"
+                ],
+                "summary": "Get a User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "search user by id",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/GetUsers": {
+            "get": {
+                "description": "All User",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserManagement"
+                ],
+                "summary": "All User",
+                "responses": {}
+            }
+        },
+        "/UpdateUser/{user_id}": {
+            "patch": {
+                "description": "Update a User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "UserManagement"
+                ],
+                "summary": "Update a User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Update user by id",
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update Person",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SwagPerson"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "models.SwagPerson": {
+            "type": "object",
+            "properties": {
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
